@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+    
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    margin-top: 50px;
+}
+  
+.form-container > label {
+    font-weight: bold;
+}
+  
+.form-container input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    outline: none;
+}
+    
+button {
+    width: 100%;
+    background-color: #3783e6;
+    color: white;
+    padding: 15px 0;
+    border: none;
+    cursor: pointer;
+}
+  
+
+.form-container input[type="text"] {
+    width: 100%;
+}
+  
+.radio-group, .checkbox-group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
+}
+
+#form-container h4 {
+    margin: 0;
+}
+
+  

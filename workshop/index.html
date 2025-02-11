@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>W E L C O M E</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+  </head>
+  
+  <body>
+    <form id="form">
+        <div class="form-container">
+        <h2>Welcome to 2024 UAlbany IEEE Hackathon!</h2>
+        
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" value="Ruby" required >
+        
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" value="Engelhart" required>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="re@gmail.com" required>
+        
+        <label for="sid">Student ID:</label>
+        <input type="text" id="sid" name="sid" value="RE443322" required>
+             
+        <h4>Year of College:</h4>
+        <div class="radio-group">
+            <div>
+                <input type="radio" id="freshman" name="year" value="0" checked>
+                <label for="freshman">Freshman</label>
+            </div>
+            <div>
+                <input type="radio" id="sophomore" name="year" value="1">
+                <label for="sophomore">Sophomore</label>
+            </div>
+            <div>
+                <input type="radio" id="junior" name="year" value="2">
+                <label for="junior">Junior</label>
+            </div>
+            <div>
+                <input type="radio" id="senior" name="year" value="3">
+                <label for="senior">Senior</label>
+            </div>
+        </div>
+        <h4>Events you wish to attend:</h4>
+        <div class="checkbox-group">
+            <div>
+                <input type="checkbox" id="web_dev_wrk_shp" name="web_dev_wrk_shp" value="web_dev_wrk_shp">
+                <label for="web_dev_wrk_shp">Web Development Workshop</label>
+            </div>
+            <div>
+                <input type="checkbox" id="competition" name="competition" value="competition">
+                <label for="competition">Competition</label>
+            </div>
+            <div>
+                <input type="checkbox" id="guest" name="guest" value="guest">
+                <label for="guest">Guest</label>
+            </div>
+        </div>
+        <button id="submit" type="submit">Submit</button>
+        </div>
+    </form>
+    <script language="javascript" type="text/javascript" src="app.js"></script>
+  </body>
+</html>
+
