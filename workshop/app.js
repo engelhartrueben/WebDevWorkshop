@@ -1,3 +1,13 @@
+/**
+ * { 
+ * fname : str,
+ * lname : str,
+ * sid   : str,
+ * year  : int,
+ * events: [str]
+ * }
+ */
+
 const form = document.getElementById("form");
 const submit = document.getElementById("submit");
 
