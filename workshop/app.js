@@ -1,13 +1,3 @@
-/**
- * { 
- * fname : str,
- * lname : str,
- * sid   : str,
- * year  : int,
- * events: [str]
- * }
- */
-
 const form = document.getElementById("form");
 const submit = document.getElementById("submit");
 
@@ -66,9 +56,12 @@ const checkStudentId = (studentId) => {
     if (reg.test(studentId)) { 
 	    return true
     }
+    alert("Bad Student ID!");
     return false; 
 }
 
+// @param data has changed structure over at the 
+// fastapi
 const post = (data) => {
 	console.log("post: " + JSON.stringify(data));
 	const response = fetch(IP + "/submit/", {
