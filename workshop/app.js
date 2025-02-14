@@ -11,6 +11,8 @@
 const form = document.getElementById("form");
 const submit = document.getElementById("submit");
 
+const IP = "http://localhost:8000";
+
 console.log("Hello IEEE Hackathon!");
 
 const handleForm = (e) => {
@@ -29,40 +31,55 @@ const handleForm = (e) => {
      * given a form element. 
      */
     const data = new FormData(form);
+    let submission = {};
+    let latch = true;
     for (const [name, value] of data) {
         console.log(name, ":", value);
         switch (name) {
             case "fName" || "lName":
-                checkName(value);
+                latch = latch && checkName(value);
             case "email":
-                checkEmail(value);
+                latch = latch && checkEmail(value);
                 break;
             case "sid":
-                checkStudentId(value);
+                latch = latch && checkStudentId(value);
                 break;
         }
+	submission[name] = value;
     }
+    console.log(submission);
+    if (latch) post(submission);
+    // add error if latch is broken
 }
 
 const checkName = (name) => {
-
+	return true;
 }
 
 const checkEmail = (email) => {
-    console.log("In check email submission!")
+    console.log("In check email submission!");
+    return true;
 }
 
 const checkStudentId = (studentId) => {
     const reg = new RegExp(/^[A-Z]{2}\d{6}$/);
     if (reg.test(studentId)) { 
-        console.log("Is correct!")
-    } else {
-        alert("Student ID is not correct! Example: AB123456")
+	    return true
     }
+    return false; 
 }
 
-const post = () => {
-
+const post = (data) => {
+	console.log("post: " + JSON.stringify(data));
+	const response = fetch(IP + "/submit/", {
+		method: "POST",
+		headers: {
+			"Accept": "application/json",
+			"Content-type": "application/json",
+		},
+		body: JSON.stringify(data),
+	})
 }
 
 form.addEventListener("submit", handleForm);
+
