@@ -6,15 +6,19 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+# There is a way to do this with regex...
+# might be less annoying to just allow all origins
 origin = [
-        "http://localhost:8000",
-        "http://0.0.0.0:8000",
+        "http://localhost:*",
+        "http://0.0.0.0:*",
+        "http://127.0.0.1:*",
 ]
 
 app.add_middleware(
         CORSMiddleware,
-        allow_origins=['*'], # this is a touch danger
-        allow_methods=['*'],
+        # allow_origin_regex=origin,
+        allow_origins=['*'],
+        allow_methods=['GET', 'POST'],
         allow_headers=['*']
 )
 
