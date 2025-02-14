@@ -18,35 +18,17 @@ app.add_middleware(
         allow_headers=['*']
 )
 
-class Test(BaseModel):
-    name: str
-    price: float
-    count: int
-
-class Simple(BaseModel):
-    item: int
-
 class Form(BaseModel):
-    fname: str | None = None
-    lname: str | None = None
-    email: str | None = None
-    sid: str | None = None
-    year: str | None = None
-    event_1: str | None = None
-    event_2: str | None = None
-    event_3: str | None = None
+    fname: str
+    lname: str
+    email: str
+    sid: str
+    year: int
+    event: list[str]
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
-@app.post("/test/")
-def test(item: Test):
-    return {"congrats": "True"}
-
-@app.post("/again/")
-def again(item: Simple) -> int:
-    return item.item ** 2
 
 @app.post("/submit/")
 def submitForm(form: Form) -> None:
