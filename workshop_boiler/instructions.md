@@ -48,10 +48,18 @@ After we add the `<h2>` text, lets add our first label and input to ask for the 
 
 Click on the box below to reveal what these input and labels should look like, but first, give it a good faith effort!
 
-Label:
+<details>
+<summary>Label:</summary>
 
->! `<label for="fname">First Name:</label>`
+```html
+<label for="fname">First Name: </label>
+```
+</details>
 
-Input:
+<details>
+<summary>Input:</summary>
 
->! `<input type="text" id="fname" name="fname" required></input>`
+```html
+<input type="text" id="fname" name="fname" required></input>
+```
+</details>
