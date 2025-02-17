@@ -1,10 +1,55 @@
 const form = document.getElementById("form");
-const submit = document.getElementById("submit");
+const totalSubmissions = document.getElementById("total_submissions");
 
 // Default port for FastApi..
 const IP = "http://localhost:8000";
 
 console.log("Hello IEEE Hackathon! (:");
+
+const post = (data) => {
+	// if no ip, return
+	// no need to waste resources
+	if (IP == "") return;
+
+	console.log("post: " + JSON.stringify(data));
+	const response = fetch(IP + "/submit/", {
+		method: "POST",
+		headers: {
+			"Accept": "application/json",
+			"Content-type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
+	// print the response code
+	console.log(response.status);
+}
+
+const get = async url => {
+	// if no ip, return
+	// no need to waste resources
+	if (IP == "") return;
+
+	const response = await fetch(IP + url, {
+		method: "GET",
+		headers: {
+			"Accept": "application/json",
+			"Content-type": "application/json",
+		}
+	}).then(r => r.json());
+
+	return response;
+}
+
+const setTotalSubmissionsOnScreen = (total) => {
+	totalSubmissions.innerText = (
+		total.total_submissions === 0 ?
+		"Be the first to sign up!" :
+		`You will be joining ${total.total_submissions} other submissions (:`
+	);
+}
+
+// query every half second
+setInterval(async () => setTotalSubmissionsOnScreen(await get("/howmany/")), 500);
 
 const handleForm = (e) => {
     // Prevents page from refreshing after submission
@@ -34,8 +79,7 @@ const handleForm = (e) => {
 			submission[name] = value;
 		} else {
 			// ternary operand
-			alert(`Bad ${name == "fname" ? "first name" : "last name"}!`);
-			return;
+			alert(`Bad ${name == "fname" ? "first name" : "last name"}!`); return;
 		}
 		break;
 
@@ -114,20 +158,6 @@ const checkStudentId = (studentId) => {
     return false; 
 }
 
-// fastapi post request!
-const post = (data) => {
-	console.log("post: " + JSON.stringify(data));
-	const response = fetch(IP + "/submit/", {
-		method: "POST",
-		headers: {
-			"Accept": "application/json",
-			"Content-type": "application/json",
-		},
-		body: JSON.stringify(data),
-	})
-}
-
 // Listens for when the submit button is pressed,
 // then runs the function handleForm
 form.addEventListener("submit", handleForm);
-
