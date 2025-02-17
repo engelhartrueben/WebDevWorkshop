@@ -32,6 +32,8 @@ app.add_middleware(
         allow_headers=['*']
 )
 
+count = 0
+
 class Form(BaseModel):
     fname: str
     lname: str
@@ -53,18 +55,26 @@ def submitForm(form: Form, requests: Request):
     # if (conn.ERROR):
     #     return conn.ERROR
 
+    print(requests.client, end=" ")
     file = open(f"{os.getcwd()}/{config["OUTPUT_FILE_NAME"]}", "a+")
     file.write(f"{str(requests.client)}, ")
     file.write(datetime.now().strftime("%m/%d/%Y, %H:%M.%S, "))
+    global count
     for k,v in form.model_dump().items():
         if (k in "event"):
             file.write(str(v))
+            print(str(v))
         else:
-            file.write(f"{str(v)}, ")
+            file.write(f"{str(v)}, ", )
+            print(f"{str(v)}, ", end="")
     file.write("\n")
-        
+    
+    count = count + 1
 
-    print(requests.client)
+@app.get("/howmany/")
+def getHowManySubmissions():
+    print(count)
+    return { "total_submissions": count }
 
 # holding off on this.. probably just going to place everything
 # in a plain text file for simplicity sake. 
