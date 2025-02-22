@@ -186,10 +186,9 @@ Give it a go, then check your work!
 ```
 </details>
 
+Alright, we are nearly done! We just need to add a button to submit our users submission. Lets add another empty `<div>` without a classname. In this `<div>`, add a `<button>` element. This `<button>` element will have the attribut id set to "submit" and type set to "submit". The inner text will be "Submit". By setting the type to "submit", we are saying tha this button will trigger the submition of the users information to be sent somewhere. Technically, we don't have the infrastructure currently set up for that, but we can imagine that we are storing this information somehwere. 
 
-
-
-
+We are done! Take a look at your submission page by double clicking on the `index.html` file. This should open in your browser so you see your hard work. 
 
 
 
