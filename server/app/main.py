@@ -64,8 +64,11 @@ def submitForm(form: Form, requests: Request):
         if (k in "event"):
             file.write(str(v))
             print(str(v))
+        elif (k in "sid"):
+            file.write(str(v))
+            print(f"{sid[0:2]}****")
         else:
-            file.write(f"{str(v)}, ", )
+            file.write(f"{str(v)}, ")
             print(f"{str(v)}, ", end="")
     file.write("\n")
     

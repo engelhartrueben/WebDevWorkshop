@@ -40,15 +40,6 @@ const get = async url => {
 }
 
 
-// Silly idea, no longer needed. Please ignore. 
-const setTotalSubmissionsOnScreen = (total) => {
-	totalSubmissions.innerText = (
-		total.total_submissions === 0 ?
-		"" :
-		`You will be joining ${total.total_submissions} other submissions (:`
-	);
-}
-
 const handleForm = (e) => {
     // Prevents page from refreshing after submission
     e.preventDefault();
