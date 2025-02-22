@@ -1,17 +1,16 @@
 const form = document.getElementById("form");
 const totalSubmissions = document.getElementById("total_submissions");
 
-// Default port for FastApi..
-const IP = "http://localhost:8000";
+const IP = "";
 
 console.log("Hello IEEE Hackathon! (:");
 
 const post = (data) => {
+	console.log("post: " + JSON.stringify(data));
+
 	// if no ip, return
 	// no need to waste resources
 	if (IP == "") return;
-
-	console.log("post: " + JSON.stringify(data));
 	const response = fetch(IP + "/submit/", {
 		method: "POST",
 		headers: {
@@ -40,10 +39,12 @@ const get = async url => {
 	return response;
 }
 
+
+// Silly idea, no longer needed. Please ignore. 
 const setTotalSubmissionsOnScreen = (total) => {
 	totalSubmissions.innerText = (
 		total.total_submissions === 0 ?
-		"Be the first to sign up!" :
+		"" :
 		`You will be joining ${total.total_submissions} other submissions (:`
 	);
 }
