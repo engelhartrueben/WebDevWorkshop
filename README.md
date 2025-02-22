@@ -101,14 +101,43 @@ Make a good faith effort, then take a look to see if your implementation matched
 <summary>Freshman input</summary>
  
 ```html
-<input type="radio" id="freshman" name="year" value="0 checked>
-<label for="freshman">Freshman</label>
+<div>
+    <input type="radio" id="freshman" name="year" value="0 checked>
+    <label for="freshman">Freshman</label>
+</div>
 ```
 </details>
 
+Lets add options for Sophomore, Junior, and Senior now!
+Effectively, copy the freshman template, changing the appropriate attributes to match the year. The `value` attribute will increment by one, so Sophomore will have a value of 1, Junior 2, and Senior 3.
 
+Once you are done, take a look at my code to see how you did!
 
+<details>
+<summary>Year of College</summary>
 
+```html
+<div class="radio-group">
+             <div>
+                <input type="radio" id="freshman" name="year" value="0" checked>
+                <label for="freshman">Freshman</label>
+             </div>
+             <div>
+                <input type="radio" id="sophomore" name="year" value="1">
+                <label for="sophomore">Sophomore</label>
+             </div>
+             <div>
+                 <input type="radio" id="junior" name="year" value="2">
+                 <label for="junior">Junior</label>
+             </div>
+             <div>
+                 <input type="radio" id="senior" name="year" value="3">
+                 <label for="senior">Senior</label>
+             </div>
+         </div>
+```
+
+</details>
 
 
 
