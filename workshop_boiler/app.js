@@ -71,8 +71,8 @@ const handleForm = (e) => {
     for (const [name, value] of data) {
         switch (name) {
 	    // waterfalling case
-	    case "lname":
-        case "fname":
+		case "lname":
+		case "fname":
 			if (checkName(value)) {
 				submission[name] = value;
 			} else {
@@ -81,20 +81,20 @@ const handleForm = (e) => {
 			}
 		break;
 
-        case "email":
+        	case "email":
 			if (checkEmail(value)) {
 				submission[name] = value;
 			} else {
 				alert('Bad email!');
 				return;
 			}
-            break;
+            		break;
 
-	    case "year":
+	    	case "year":
 			submission[name] = value;
 			break;
 
-        case "sid":
+        	case "sid":
 			if (checkStudentId(value)) {
 				submission[name] = value;
 			} else {
