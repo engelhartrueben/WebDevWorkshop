@@ -63,3 +63,61 @@ Click on the box below to reveal what these input and labels should look like, b
 <input type="text" id="fname" name="fname" required></input>
 ```
 </details>
+
+
+Lets add three more inputs for some additional information we would like! First, add another label with the text "Last Name:" and a for attribute set to "lname". Add another input with the tags id and name set to "lname". Don't forget the type! The next input with the text "Email:" with the for attribute set to "email", and its input with the id and name set to "email" as well. Last, lets grab the student id, as that will help us keep track of which students attended. The label should have the text "Student ID:" with for element set to "sid", and its input with id and name also set to "sid".
+
+See the drop down below to see if you got it right!
+
+<details>
+<summary>Spoiler</summary>
+```html
+<label for="fname">First Name:</label>
+<input type="text" id="fname" name="fname" value="Ruby" required >
+
+<label for="lname">Last Name:</label>
+<input type="text" id="lname" name="lname" value="Engelhart" required>
+
+<label for="email">Email:</label>
+<input type="text" id="email" name="email" value="re@gmail.com" required>
+
+<label for="sid">Student ID:</label>
+<input type="text" id="sid" name="sid" value="RE443322" required>
+```
+</details>
+
+
+Sweet! Lets next ask the user what year of college they are in. We are going to stick to the basic four: Freshman, Sophomore, Junior, and Senior. Instead of asking the user to type in, I think some buttons would work much better. We are going to use something radio buttons, which are presented in groups where only one input is allowed. For instance, a student connot be both a freshman and sophomore.
+
+After our last input element, lets add a title. Add a `<h4>` element and name it "Year of College:". Don't forget to close it!
+
+Lets use another `<div>` element as well to seperate these buttons out. Git it a class attribute set to "radio-group". 
+
+Within that `<div>` element, add antother FOUR `<div>` elements. They do not need a class. In the first `<div>` element lets ask if the user is a freshman. First, add an `<input>` element with the attributes: type set to "radio", id set to "freshman", name set to "year", value set to "0", and then add the word checked within the tag as well. This makes the default answer Freshman by checking this button for the user. After, add a `<label>` element with the the atribut for set to "freshman", and withing the opening and closing tags add the text "Freshman".
+
+Make a good faith effort, then take a look to see if your implementation matched ming!
+
+<details>
+<summary>Freshman input</summary>
+```html
+<input type="radio" id="freshman" name="year" value="0
+ checked>
+<label for="freshman">Freshman</label>
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
