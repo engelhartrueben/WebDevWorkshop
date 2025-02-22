@@ -49,9 +49,6 @@ const setTotalSubmissionsOnScreen = (total) => {
 	);
 }
 
-// query every half second
-setInterval(async () => setTotalSubmissionsOnScreen(await get("/howmany/")), 500);
-
 const handleForm = (e) => {
     // Prevents page from refreshing after submission
     e.preventDefault();
@@ -75,49 +72,48 @@ const handleForm = (e) => {
         switch (name) {
 	    // waterfalling case
 	    case "lname":
-            case "fname":
-		if (checkName(value)) {
-			submission[name] = value;
-		} else {
-			// ternary operand
-			alert(`Bad ${name == "fname" ? "first name" : "last name"}!`); return;
-		}
+        case "fname":
+			if (checkName(value)) {
+				submission[name] = value;
+			} else {
+				// ternary operand
+				alert(`Bad ${name == "fname" ? "first name" : "last name"}!`); return;
+			}
 		break;
 
-            case "email":
-		if (checkEmail(value)) {
-			submission[name] = value;
-		} else {
-			alert('Bad email!');
-			return;
-		}
-                break;
+        case "email":
+			if (checkEmail(value)) {
+				submission[name] = value;
+			} else {
+				alert('Bad email!');
+				return;
+			}
+            break;
 
 	    case "year":
-		submission[name] = value;
-		break;
-
-            case "sid":
-		if (checkStudentId(value)) {
 			submission[name] = value;
-		} else {
-			alert('Bad Student ID');
-			return;
-		}
-                break;
+			break;
+
+        case "sid":
+			if (checkStudentId(value)) {
+				submission[name] = value;
+			} else {
+				alert('Bad Student ID');
+				return;
+			}
+			break;
 	
 	    // waterfall case
 	    case "event_1":
 	    case "event_2":
 	    case "event_3":
-		if (submission["event"]) {
-			submission["event"].push(value);
-		} else {
-			submission["event"] = [value];
+			if (submission["event"]) {
+				submission["event"].push(value);
+			} else {
+				submission["event"] = [value];
+			}
+			break;
 		}
-		break;
-        }
-
     }
 
     // If there are no events picked, alert the user
@@ -136,8 +132,7 @@ const handleForm = (e) => {
 // No spaces might not work...
 const checkName = (name) => {
     const reg = new RegExp(/^[A-Za-z]+$/);
-    if (reg.test(name)) return true;
-    return false;
+    return reg.test(name);
 }
 
 // Checks that an email has an @ and . symbol,
@@ -147,16 +142,14 @@ const checkName = (name) => {
 // re@.net      - FAILS
 const checkEmail = (email) => {
     const reg = new RegExp(/^[A-Za-z1-9]+[@]{1}[A-Za-z]+[.]{1}[A-Za-z]+$/);
-    if (reg.test(email)) return true;
-    return false;
+    return reg.test(email);
 }
 
 // Checks that a studen id starts with two letters followed
 // by 6 digits.
 const checkStudentId = (studentId) => {
     const reg = new RegExp(/^[A-Z]{2}\d{6}$/);
-    if (reg.test(studentId)) return true;
-    return false; 
+    return reg.test(studentId);
 }
 
 // Listens for when the submit button is pressed,
