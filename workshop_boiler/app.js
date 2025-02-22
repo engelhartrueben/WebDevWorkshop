@@ -103,10 +103,10 @@ const handleForm = (e) => {
 			}
 			break;
 	
-	    // waterfall case
-	    case "event_1":
-	    case "event_2":
-	    case "event_3":
+	    	// waterfall case
+	    	case "event_1":
+	    	case "event_2":
+	    	case "event_3":
 			if (submission["event"]) {
 				submission["event"].push(value);
 			} else {
