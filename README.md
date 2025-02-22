@@ -134,12 +134,57 @@ Once you are done, take a look at my code to see how you did!
                  <input type="radio" id="senior" name="year" value="3">
                  <label for="senior">Senior</label>
              </div>
-         </div>
+</div>
 ```
-
 </details>
 
+Next, lets ask the user what events they wish to attend! Lets stick with three simple ones: Competition, Guest, or Web Development Workshop!
 
+First, lets add another `<h4>` tag with the text "Events you wish to attend:". After, add a `<div>` with the class "checkbox-group". As you may have guessed, we are going to use checkboxes instead of radio buttons. Check boxes inheriently allow the user to select multiple options. So our user may want to both compete and participate in the Web Development Workshop. It may be silly to be all three, but oh well, we can deal with that when we are analyzing the results.
+
+In this `div` with class "checkbox-group", add three empty `<div>` elements similar to how we did the radio buttons for the year of the user. Lets start with a checkbox for "Web Development Workshop".
+
+Add an `<input>` element with the type set to "checkbox", id set to "web_dev_work_shop", name set to "event_1", and value set to "web_dev_wrk_shop". Under this input, add a `<label>` element withe the attribute for set to "web_dev_wrk_shp" and the inner text set to "Web Development Workshop". 
+
+Try your best, then double check your work!
+
+<details>
+<summary>Web Development Workshop</summary>
+
+```html
+<div>
+    <input types="checkbox" id="web_dev_wrk_shp" name="event_1" value="web_dev_wrk_shp">
+    <label for="web_dev_wrk_shop">Web Development Workshop</label>
+</div>
+```
+</details>
+
+Awesome! Lets add the other two, "Competition" and "Guest".
+
+Follow the similar pattern with "Web Development Workshop". "Competition" input should have the id attribute set to "competition", name set to "event_2", and value set to "competition". Its label tag should have the for attribute set to "competition", and inner text of "Competition". "Guest" input should have the id set to "guest", name set to "event_3", and value set to "guest". Its label should have the for attribute set to "guest", and inner text of "Guest".
+
+Give it a go, then check your work!
+
+<details>
+<summary>Events you wish to attend:</summary>
+
+```html
+        <div class="checkbox-group">
+            <div>
+                <input type="checkbox" id="web_dev_wrk_shp" name="event_1" value="web_dev_wrk_shp">
+                <label for="web_dev_wrk_shp">Web Development Workshop</label>
+            </div>
+            <div>
+                <input type="checkbox" id="competition" name="event_2" value="competition">
+                <label for="competition">Competition</label>
+            </div>
+            <div>
+                <input type="checkbox" id="guest" name="event_3" value="guest">
+                <label for="guest">Guest</label>
+            </div>
+        </div>
+```
+</details>
 
 
 
