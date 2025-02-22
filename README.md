@@ -44,13 +44,12 @@ After we add the `<div class="form-container">`, lets add our first piece of tex
 
 Generally, when we are developing we applications such as this form, we want to be able to see waht exactly we are working on visually. Browsers support viewing HTML files, and generally all you have to do is open your selected `.html` file by double clicking. Otherwise, you can manually input the path of the file in your browser, like so: `file://path/to/file/index.html`. Go ahead and do that now so we see our `<h2>` text!
 
-After we add the `<h2>` text, lets add our first label and input to ask for the users First Name! Lets first add the label with the `<label>` tag. Don't forget to close it! Within the opening and closing `<label>`, lets add the text "First Name: " (with the space!). Lets add a `for` attribute set to "fname", which will tell the browser that this label is specifically made for the input we will be adding next. Next, add an `<input>` tag with the attritubes `type` set to `"text"`, `id` set to "fname", `name` set to "fname", and lastly, the word `required` wihtout quotes surrounding it. The `for` attribute we set in the label element specifically binds to the `id` of the input element. The `type` is a built in tool that tells the HTML that only text should be entered into this input. The `name` is important as it tells our form what data is being submitted. `required` tells the browser that this input is needed within the form, and stops the user from submitting before this input has some text inputted.
+After we add the `<h2>` text, lets add our first label and input to ask for the users First Name! Lets first add the label with the `<label>` tag. Don't forget to close it! Within the opening and closing `<label>`, lets add the text "First Name: " (with the space!). Lets add a `for` attribute set to "fname", which will tell the browser that this label is specifically made for the input we will be adding next. Next, add an `<input>` tag with the attritubes `type` set to `"text"`, `id` set to "fname", `name` set to "fname", and lastly, the word `required` without quotes surrounding it. The `for` attribute we set in the label element specifically binds to the `id` of the input element. The `type` is a built in tool that tells the HTML that only text should be entered into this input. The `name` is important as it tells our form what data is being submitted. `required` tells the browser that this input is needed within the form, and stops the user from submitting before this input has some text inputted.
 
 Click on the box below to reveal what these input and labels should look like, but first, give it a good faith effort!
 
 <details>
 <summary>Label:</summary>
-
 ```html
 <label for="fname">First Name: </label>
 ```
@@ -65,15 +64,16 @@ Click on the box below to reveal what these input and labels should look like, b
 </details>
 
 
-Lets add three more inputs for some additional information we would like! First, add another label with the text "Last Name:" and a for attribute set to "lname". Add another input with the tags id and name set to "lname". Don't forget the type! The next input with the text "Email:" with the for attribute set to "email", and its input with the id and name set to "email" as well. Last, lets grab the student id, as that will help us keep track of which students attended. The label should have the text "Student ID:" with for element set to "sid", and its input with id and name also set to "sid".
+Lets add three more inputs for some additional information we would like! First, add another label with the text "Last Name:" and a for attribute set to "lname". Add another input with the tags id and name set to "lname", as well as `required`. Don't forget the type! The next input with the label "Email:" with the for attribute set to "email", and its input with the id and name set to "email" as well and `required`. Last, lets grab the student id, as that will help us keep track of which students attended. The label should have the text "Student ID:" with for element set to "sid", and its input with id and name also set to "sid" with `required`.
 
 See the drop down below to see if you got it right!
 
 <details>
 <summary>Spoiler</summary>
+ 
 ```html
 <label for="fname">First Name:</label>
-<input type="text" id="fname" name="fname" value="Ruby" required >
+<input type="text" id="fname" name="fname" value="Ruby" required>
 
 <label for="lname">Last Name:</label>
 <input type="text" id="lname" name="lname" value="Engelhart" required>
@@ -99,12 +99,14 @@ Make a good faith effort, then take a look to see if your implementation matched
 
 <details>
 <summary>Freshman input</summary>
+ 
 ```html
-<input type="radio" id="freshman" name="year" value="0
- checked>
+<input type="radio" id="freshman" name="year" value="0 checked>
 <label for="freshman">Freshman</label>
 ```
 </details>
+
+
 
 
 
