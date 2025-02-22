@@ -1,17 +1,16 @@
 const form = document.getElementById("form");
 const totalSubmissions = document.getElementById("total_submissions");
 
-// Default port for FastApi..
-const IP = "http://localhost:8000";
+const IP = "https://debianhomelab.tailc1a913.ts.net:8443";
 
 console.log("Hello IEEE Hackathon! (:");
 
 const post = (data) => {
+	console.log("post: " + JSON.stringify(data));
+
 	// if no ip, return
 	// no need to waste resources
 	if (IP == "") return;
-
-	console.log("post: " + JSON.stringify(data));
 	const response = fetch(IP + "/submit/", {
 		method: "POST",
 		headers: {
@@ -21,7 +20,8 @@ const post = (data) => {
 		body: JSON.stringify(data),
 	});
 	// print the response code
-	console.log(response.status);
+	// no status rn.. forgot
+	//console.log(response.status);
 }
 
 const get = async url => {
@@ -40,16 +40,6 @@ const get = async url => {
 	return response;
 }
 
-const setTotalSubmissionsOnScreen = (total) => {
-	totalSubmissions.innerText = (
-		total.total_submissions === 0 ?
-		"Be the first to sign up!" :
-		`You will be joining ${total.total_submissions} other submissions (:`
-	);
-}
-
-// query every half second
-setInterval(async () => setTotalSubmissionsOnScreen(await get("/howmany/")), 500);
 
 const handleForm = (e) => {
     // Prevents page from refreshing after submission
@@ -73,50 +63,49 @@ const handleForm = (e) => {
     for (const [name, value] of data) {
         switch (name) {
 	    // waterfalling case
-	    case "lname":
-            case "fname":
-		if (checkName(value)) {
-			submission[name] = value;
-		} else {
-			// ternary operand
-			alert(`Bad ${name == "fname" ? "first name" : "last name"}!`); return;
-		}
+		case "lname":
+		case "fname":
+			if (checkName(value)) {
+				submission[name] = value;
+			} else {
+				// ternary operand
+				alert(`Bad ${name == "fname" ? "first name" : "last name"}!`); return;
+			}
 		break;
 
-            case "email":
-		if (checkEmail(value)) {
-			submission[name] = value;
-		} else {
-			alert('Bad email!');
-			return;
-		}
-                break;
+        	case "email":
+			if (checkEmail(value)) {
+				submission[name] = value;
+			} else {
+				alert('Bad email!');
+				return;
+			}
+            		break;
 
-	    case "year":
-		submission[name] = value;
-		break;
-
-            case "sid":
-		if (checkStudentId(value)) {
+	    	case "year":
 			submission[name] = value;
-		} else {
-			alert('Bad Student ID');
-			return;
-		}
-                break;
+			break;
+
+        	case "sid":
+			if (checkStudentId(value)) {
+				submission[name] = value;
+			} else {
+				alert('Bad Student ID');
+				return;
+			}
+			break;
 	
-	    // waterfall case
-	    case "event_1":
-	    case "event_2":
-	    case "event_3":
-		if (submission["event"]) {
-			submission["event"].push(value);
-		} else {
-			submission["event"] = [value];
+	    	// waterfall case
+	    	case "event_1":
+	    	case "event_2":
+	    	case "event_3":
+			if (submission["event"]) {
+				submission["event"].push(value);
+			} else {
+				submission["event"] = [value];
+			}
+			break;
 		}
-		break;
-        }
-
     }
 
     // If there are no events picked, alert the user
@@ -135,8 +124,7 @@ const handleForm = (e) => {
 // No spaces might not work...
 const checkName = (name) => {
     const reg = new RegExp(/^[A-Za-z]+$/);
-    if (reg.test(name)) return true;
-    return false;
+    return reg.test(name);
 }
 
 // Checks that an email has an @ and . symbol,
@@ -146,16 +134,14 @@ const checkName = (name) => {
 // re@.net      - FAILS
 const checkEmail = (email) => {
     const reg = new RegExp(/^[A-Za-z1-9]+[@]{1}[A-Za-z]+[.]{1}[A-Za-z]+$/);
-    if (reg.test(email)) return true;
-    return false;
+    return reg.test(email);
 }
 
 // Checks that a studen id starts with two letters followed
 // by 6 digits.
 const checkStudentId = (studentId) => {
     const reg = new RegExp(/^[A-Z]{2}\d{6}$/);
-    if (reg.test(studentId)) return true;
-    return false; 
+    return reg.test(studentId);
 }
 
 // Listens for when the submit button is pressed,
